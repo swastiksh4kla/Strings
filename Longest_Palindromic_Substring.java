@@ -1,5 +1,5 @@
 //BRUTE FORCE
-//Time: O(n^3)  &  Space: O(1)
+//Time: O(n^3)  &  Space: O(n)
 class Solution {
     public String longestPalindrome(String s) {
         int maxLen = 0;
