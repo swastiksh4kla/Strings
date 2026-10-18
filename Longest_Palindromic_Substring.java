@@ -1,4 +1,4 @@
-//BRUTE FORCE
+//---BRUTE FORCE---
 //Time: O(n^3)  &  Space: O(n)
 class Solution {
     public String longestPalindrome(String s) {
@@ -25,5 +25,32 @@ class Solution {
             right--;
         }
         return true;
+    }
+}
+
+
+//---OPTIMIZED SOLUTION---
+//Time: O(n^2)  &  Space: O(1)
+class Solution {
+    private int maxLen = 0;
+    private int start = 0;
+    public String longestPalindrome(String s) {
+        for(int i=0; i<s.length(); i++){
+            checkPalin(s,i,i);
+            checkPalin(s,i,i+1);
+        }
+        return s.substring(start, start+maxLen);
+    }
+    private void checkPalin(String s ,int l, int r){
+        while(l>=0 && r<s.length() && s.charAt(l)==s.charAt(r)){
+            l--;
+            r++;
+        }
+        int currLen = r-l-1;
+
+        if(currLen>maxLen){
+            maxLen = currLen;
+            start = l+1;
+        }
     }
 }
